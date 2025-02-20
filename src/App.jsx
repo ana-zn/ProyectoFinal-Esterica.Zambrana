@@ -1,10 +1,15 @@
 
 import './App.css'
-
+import NavBar from './components/navbar/navbar'
+import Banner from './components/bannerhero/banner'
 function App() {
   return (
-    <h1>Bienvenidos </h1>
-  )
+    <>
+        <NavBar />
+        <Banner />
+
+    </>
+); 
 }
 
 export default App

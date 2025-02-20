@@ -1,0 +1,29 @@
+/*Estilos del Header*/
+.content-header{
+    display: flex;
+    justify-content: space-between;
+    padding: 16px 80px;
+    align-items: center;
+  }
+  
+  .list-item{
+    display: flex;
+  }
+  li{
+    list-style: none;
+    width: 100%;
+    margin: 8px 16px;
+    font-family: "Poppins", serif;
+    color: #EF6A3F;
+  }
+  
+  .button-navbar{
+    margin: 0 4px;
+    padding: 4px;
+    background-color: transparent;
+    font-size: 1.5rem;
+    border: none;
+    color: #EF6A3F;
+    
+}
+  
