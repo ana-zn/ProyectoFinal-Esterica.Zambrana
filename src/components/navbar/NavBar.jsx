@@ -8,7 +8,7 @@ function NavBar() {
         
         <header className='content-header'>
                 <div className='content-logo'>
-                 <img src="images/logo.svg" alt="" />
+                 <img src="/images/logo.svg" alt="" />
                 </div>
                 <nav className='content-navbar'>
                     <ul className='list-item'>
