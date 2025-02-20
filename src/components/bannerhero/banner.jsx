@@ -6,7 +6,7 @@ function NavBar() {
     return(
         
       <section className='sectionHero'>
-        <img src="/images/bannerHero.jpg" alt="Banner de la sección Principal" />
+        <img src="images/bannerHero.jpg" alt="Banner de la sección Principal" />
       </section>
       
     ); 
