@@ -1,0 +1,9 @@
+.ItemListContainer{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    width: 100%;
+    gap: 24px;
+    padding: 32px 80px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
