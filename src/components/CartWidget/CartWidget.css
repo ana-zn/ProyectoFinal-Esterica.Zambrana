@@ -1,0 +1,10 @@
+#shop-button{
+    margin: 0 4px;
+    padding: 4px;
+    background-color: transparent;
+    font-size: 1.5rem;
+    border: none;
+    color: #EF6A3F;  
+    cursor: pointer;
+}
+  
