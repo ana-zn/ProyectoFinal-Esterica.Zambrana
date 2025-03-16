@@ -1,17 +1,68 @@
+import { useEffect, useState } from 'react';
+import Item from '../item/Item';
+import fetchData from '../../fetchData';
+import Loader from '../Loader/Loader'; 
+import './ItemListContainer.css';
 
-import './ItemListContainer.css'; 
-import Item  from '../item/Item';
 
-function ItemListContainer() {
-    return(
-        
-      <section className='ItemListContainer'>
-        <Item nombre={'Bálsamo labial Cheery'} price={8700} src= 'images/1.jpg' />
-        <Item nombre={'Rubor con acabado sedoso'} price={12000} src='images/2.jpg' />
-        <Item nombre={'Base de líquida Radiance'} price={16000} src='images/3.jpg'/>
-        <Item nombre={'Juego de brochas Pro Look'} price={19000} src='images/4.jpg' />
-      </section>
-      
+function ItemListContainer({ greetings }) {
+    const [todosLosProductos, setTodosLosProductos] = useState([]);
+    const [misProductos, setMisProductos] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    const usarfiltro = (filtro) => {
+      switch (filtro) {
+        case "Ninguno":
+          setMisProductos([]);
+        break;
+        case "Todos":
+          setMisProductos(todosLosProductos);
+          break;
+        case "Labiales":
+          setMisProductos(todosLosProductos.filter(producto => producto.categoria === "Labiales"));
+          break;
+        case "Bases":
+          setMisProductos(todosLosProductos.filter(producto => producto.categoria === "Bases"));
+          break;
+        default:
+          break;
+      }
+    };
+   
+
+    // Hook de efectos: 
+    useEffect(() => {
+      fetchData().then(response => {
+          setTodosLosProductos(response);
+          setMisProductos(response);
+          setLoading(false);
+      })
+      .catch(err => console.error(err));
+    }, []);
+
+    return (
+      <> 
+        <h1>{greetings}</h1>
+        <section className='container-filter'>
+          <button onClick={() => usarfiltro("Todos")}>Todos</button>
+          <button onClick={() => usarfiltro("Bases")}>Bases</button>
+          <button onClick={() => usarfiltro("Labiales")}>Labiales</button>
+          <button onClick={() => usarfiltro("Ninguno")}>Ninguno</button>
+        </section>
+
+        <section className='ItemListContainer'>
+          {
+            loading ? <Loader/>:
+            misProductos.map((el,index) => {
+              return (
+                <Item key = {index}  nombre={el.nombre} precio={el.precio} img = {el.img} />
+              )
+            })
+          }
+                
+        </section>
+      </>
     ); 
 }
-export default ItemListContainer; 
+
+export default ItemListContainer;
