@@ -21,13 +21,17 @@ function ItemListContainer({ greetings }) {
           setDetalleFiltrado(false);
           setMisProductos(todosLosProductos);
           break;
-        case "Labiales":
+        case "labios":
           setDetalleFiltrado(false);
-          setMisProductos(todosLosProductos.filter(producto => producto.categoria === "Labiales"));
+          setMisProductos(todosLosProductos.filter(producto => producto.categoria === "labios"));
           break;
-        case "Bases":
+        case "ojos": 
+          setDetalleFiltrado(false); 
+          setMisProductos(todosLosProductos.filter(producto => producto.categoria === "ojos"));
+          break; 
+        case "rostro":
           setDetalleFiltrado(false);
-          setMisProductos(todosLosProductos.filter(producto => producto.categoria === "Bases"));
+          setMisProductos(todosLosProductos.filter(producto => producto.categoria === "rostro"));
           break;
         case "Detalle":
           setDetalleFiltrado(true);
@@ -54,9 +58,9 @@ function ItemListContainer({ greetings }) {
         {!detalleFiltrado && (
           <section className='container-filter'>
             <button onClick={() => usarFiltro("Todos")}>Todos</button>
-            <button onClick={() => usarFiltro("Bases")}>Bases</button>
-            <button onClick={() => usarFiltro("Labiales")}>Labiales</button>
-            <button onClick={() => usarFiltro("Ninguno")}>Ninguno</button>
+            <button onClick={() => usarFiltro("rostro")}>Rostro</button>
+            <button onClick={() => usarFiltro("labios")}>Labios</button>
+            <button onClick={() => usarFiltro("ojos")}>Ojos</button>
           </section>
         )}
 
