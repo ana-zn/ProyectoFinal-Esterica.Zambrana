@@ -26,35 +26,36 @@
     object-fit: cover;
     border-radius: 16px;
 }
-.item-buttons{
+.buttons-container{
     display: flex;
     width: 100%;
-    gap:8px; 
+
 }
-.item-buttons button{
+/* .buttons-container button{
     font-size: 1rem;
     background-color: transparent;
     color:#EF6A3F ;
     padding: 8px ;
     cursor: pointer;
     font-family: "Poppins", serif;
-}
-#add-button {
+} */
+.card-btn {
+    font-size: 1rem;
     border: 2px solid #EF6A3F;
     border-radius: 100px;
     width: 100%;
-    padding: 12px 24px; 
+    padding: 16px 8px; 
     background-color: transparent;
     color: #EF6A3F;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
 }
   
-#add-button:hover {
+.card-btn:hover {
     background-color: #EF6A3F;
     color: #ffff; 
   }
-#heart-button{
+.card-btn-button{
     font-size: 1.5rem;
     border: none;
 }

@@ -12,10 +12,10 @@
 .buttons-container{
     display: flex;
     align-items: center;
-    gap:16px; 
+    gap:8px; 
     color:#EF6A3F ;
 }
-.buttons-container button{
+.button-items{
     display: flex; 
     align-items: center;
     justify-content: center;

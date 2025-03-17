@@ -1,35 +1,38 @@
 import PropTypes from 'prop-types';
-import './Item.css'
-import { LuHeart } from "react-icons/lu";
+import './Item.css';
+// import { LuHeart } from "react-icons/lu";
 
-function Item(props) {
+function Item({ id, nombre, precio, img, usarFiltro }) {
     function agregarAlCarrito() {
-        console.log("Compraste", props);
+        console.log("Compraste", { id, nombre, precio });
     } 
 
     return (
       <div className='item'>
         <div className='item-description'>
             <p className='description'>
-                {props.nombre || "No Disponible"}
+                {nombre || "No Disponible"}
             </p>
             <span className='price'>
-                ${props.precio || "No Disponible"}
+                ${precio !== undefined ? precio : "No Disponible"}
             </span>
         </div>
-        <img src={props.img || "imagen_por_defecto.jpg"} alt={props.nombre || "Producto"} className='item-image' />
-        <div className='item-buttons'>
-            <button id='add-button' onClick={agregarAlCarrito}>Agregar al Carrito</button>
-            <button id='heart-button'><LuHeart /></button>
+        <img src={img || "imagen_por_defecto.jpg"} alt={nombre || "Producto"} className='item-image' />
+        <div className='buttons-container'>
+            <button disabled={!nombre} className="card-btn" onClick={agregarAlCarrito}>Agregar al carrito</button>
+            <button disabled={!nombre} className="card-btn" onClick={() => usarFiltro("Detalle", id)}>Ver detalle</button>
+            {/* <button id='heart-button'><LuHeart /></button> */}
         </div>
       </div>
     ); 
 }
 
 Item.propTypes = {
+    id: PropTypes.number.isRequired,
     nombre: PropTypes.string,
     precio: PropTypes.number,
-    img: PropTypes.string
+    img: PropTypes.string,
+    usarFiltro: PropTypes.func.isRequired
 };
 
 export default Item;

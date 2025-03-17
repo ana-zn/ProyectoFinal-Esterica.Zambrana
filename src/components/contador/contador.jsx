@@ -28,9 +28,9 @@ function Contador() {
         <section className="contador">
             <h2>Contador</h2>
             <div className="buttons-container">
-                <button onClick={() => modificarNumero("-")}>-</button>
+                <button className= 'button-items' onClick={() => modificarNumero("-")}>-</button>
                 <p id="numero">{numero}</p>
-                <button onClick={() => modificarNumero("+")}>+</button>
+                <button className= 'button-items'  onClick={() => modificarNumero("+")}>+</button>
             </div>
         </section>
     );

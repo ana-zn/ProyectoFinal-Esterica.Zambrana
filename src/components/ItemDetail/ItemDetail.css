@@ -1,0 +1,9 @@
+.card-detail{
+     width: 100%;
+     display: flex;
+     flex-direction: column;
+}
+.card-detail h2 {
+    font-family: poppins;
+    
+}
