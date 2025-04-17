@@ -1,18 +1,19 @@
-
-import './App.css'
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import './App.css';
 import NavBar from './components/navbar/navbar'; 
-import Banner from './components/bannerhero/banner'; 
-import ItemListContainer from './components/itemlist-container/ItemListContainer';
-import Contador from './components/contador/contador';
+
 function App() {
   return (
-    <>
-        <NavBar />
-        <Banner />
-        <ItemListContainer/>
-        <Contador/>
-    </>
-); 
+    <BrowserRouter>
+      <NavBar />
+      <Routes>
+        <Route path="/" element={<p>Estamos en root</p>} />
+        <Route path="/home" element={<p>Estamos en home</p>} />
+        <Route path="*" element={<p>404 ROUTE NOT FOUND</p>} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
+
