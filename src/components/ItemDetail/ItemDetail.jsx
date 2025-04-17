@@ -31,4 +31,4 @@ function ItemDetail({ item, usarFiltro }) {
     );
 };
 
-export default ItemDetail;
+export default ItemDetail; 

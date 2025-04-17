@@ -1,4 +1,3 @@
-
 import './CartWidget.css'; 
 
 import { LuShoppingBasket } from "react-icons/lu";
@@ -8,4 +7,4 @@ function NavBar() {
         <button className='button-navbar' id='shop-button'><LuShoppingBasket /></button>
     ); 
 }
-export default NavBar; 
+export default NavBar;  
