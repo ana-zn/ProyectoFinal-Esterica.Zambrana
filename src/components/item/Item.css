@@ -1,13 +1,22 @@
 .item{
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 16px; 
 }
-
-.item-description{
+.info-detail{
     display: flex;
     justify-content: space-between;
-    padding: 0px 8px;
+}
+.item-description{
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+.item-description h2{
+    font-family: "Poppins", serif;
+    font-weight: 500;
+    color:#EF6A3F ;
+    font-size: 2rem;
 }
 .description, .price{
     font-family: "Poppins", serif;
@@ -29,33 +38,26 @@
 .buttons-container{
     display: flex;
     width: 100%;
-
+    gap: 8px; 
 }
-/* .buttons-container button{
+.card-btn{
     font-size: 1rem;
-    background-color: transparent;
-    color:#EF6A3F ;
-    padding: 8px ;
-    cursor: pointer;
-    font-family: "Poppins", serif;
-} */
-.card-btn {
-    font-size: 1rem;
+    flex: 1 1;
     border: 2px solid #EF6A3F;
     border-radius: 100px;
-    width: 100%;
-    padding: 16px 8px; 
+    padding: 8px 8px; 
     background-color: transparent;
     color: #EF6A3F;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
 }
+
   
 .card-btn:hover {
     background-color: #EF6A3F;
     color: #ffff; 
   }
 .card-btn-button{
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     border: none;
 }

@@ -1,22 +1,37 @@
-
-import './NavBar.css'; 
+import { Link } from 'react-router-dom';
 import CartWidget from '../CartWidget/CartWidget'; 
-import { LuUserRound } from "react-icons/lu";
+import './NavBar.css'; 
 
+import { LuUserRound } from "react-icons/lu";
 
 function NavBar() {
     return(
-        
         <header className='content-header'>
                 <div className='content-logo'>
-                 <img src="images/logo.svg" alt="" />
+                 <img src="./images/logo.svg" alt="" />
                 </div>
                 <nav className='content-navbar'>
                     <ul className='list-item'>
-                        <li>Home</li>
-                        <li>Shop</li>
-                        <li>About</li>
-                        <li>Contact</li>
+                        <li>
+                            <Link to = "/productos">
+                            Todos
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to =  "/productos/rostro">
+                            Rostro
+                            </Link>
+                        </li>
+                        <li>
+                        <Link to =  "/productos/ojos">
+                            Ojos
+                        </Link>
+                        </li>
+                        <li>
+                        <Link to =  "/productos/labios">
+                            Labios
+                        </Link>
+                        </li>
                     </ul>
                 </nav>
                 <div className='content-buttons'>

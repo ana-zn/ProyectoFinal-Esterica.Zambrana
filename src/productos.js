@@ -3,7 +3,7 @@ export const productos = [
         id: 1, 
         nombre: "Base Líquida Luminosa", 
         precio: 16000, 
-        img: "public/images/base1.jpg", 
+        img: "./public/images/base1.jpg", 
         stock: 10,
         oferta: true,
         descripcion: "Base líquida de cobertura media con gotero para una aplicación precisa. Ideal para unificar el tono de piel y disimular imperfecciones.",
