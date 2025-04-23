@@ -13,7 +13,13 @@ function ItemListContainer() {
     const [loading, setLoading] = useState(true);
     const [detalleFiltrado, setDetalleFiltrado] = useState(false);
 
+    const [carrito, setCarrito] = useState([]);
+
     const { categoria } = useParams(); 
+
+    const agregarAlCarrito = (producto) =>{
+      setCarrito([...carrito, producto]); 
+    }
 
     useEffect(() => {
         if(todosLosProductos.length === 0){
@@ -47,9 +53,10 @@ function ItemListContainer() {
           <Loader />
         ) : (
           misProductos.map((el, index) => (
-            <Item key={index} id={el.id} nombre={el.nombre} precio={el.precio} img={el.img}/>
+            <Item key={index} id={el.id} nombre={el.nombre} precio={el.precio} img={el.img} agregarAlCarrito={agregarAlCarrito} producto={el}/>
           ))
         )}
+        <button className='' onClick={() => console.log(carrito)}>Ver Carrito</button>
       </section>
     </>
   );

@@ -6,21 +6,28 @@ import ItemDetail from './components/ItemDetail/ItemDetail';
 import Banner from './components/bannerhero/banner';
 // import Contador from './components/Contador/contador';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-
+import { ContextProvider } from './context/context';
+import Cart from './components/Cart/Cart'
+import Checkout from './components/Checkout/Checkout';
 function App() {
-  return (
-    <BrowserRouter>
-      <>  
-      <NavBar />
-
-        <Routes>
-          <Route path='/banner' element={<Banner/>} />
-          <Route path="/productos" element={<ItemListContainer />} />
-          <Route path="/detalle/:id" element={<ItemDetail />} /> 
-          <Route path="*" element={<p>404 ROUTE NOT FOUND</p>} /> 
-        </Routes>
-      </>
-    </BrowserRouter>
+  return ( 
+     <>  
+     <ContextProvider>
+        <BrowserRouter>
+          <NavBar />
+            <Routes>
+              <Route path='/banner' element={<Banner/>} />
+              <Route path="/productos" element={<ItemListContainer />} />
+              <Route path="/detalle/:id" element={<ItemDetail />} /> 
+              <Route path='/Cart' element={<Cart/>}/>
+              <Route path='/Checkout' element={<Checkout/>} />
+              <Route path="*" element={<p>404 ROUTE NOT FOUND</p>} /> 
+            </Routes>
+    
+        </BrowserRouter> 
+    </ContextProvider>
+    
+     </>
   );
 }
 

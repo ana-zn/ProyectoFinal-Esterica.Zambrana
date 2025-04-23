@@ -3,8 +3,10 @@ import CartWidget from '../CartWidget/CartWidget';
 import './NavBar.css'; 
 
 import { LuUserRound } from "react-icons/lu";
+import { useAppContext } from '../../context/context';
 
 function NavBar() {
+    const context = useAppContext(); 
     return(
         <header className='content-header'>
                 <div className='content-logo'>

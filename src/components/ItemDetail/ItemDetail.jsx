@@ -4,14 +4,15 @@ import './ItemDetail.css';
 import { useEffect, useState } from 'react';
 import fetchData from '../../fetchData';
 import Loader from '../Loader/Loader';
+import Contador from '../Contador/contador';
+import { useAppContext } from '../../context/context';
 
 function ItemDetail() {
     const { id } = useParams(); 
     const [detalle, setDetalle] = useState(null);
 
-    function agregarAlCarrito() {
-        console.log("Vas a agregar:", detalle?.nombre);
-    };
+    const {agregarAlCarrito, contador} = useAppContext(); 
+
 
     useEffect(() => {
         fetchData()
@@ -44,10 +45,9 @@ function ItemDetail() {
                 }
                
                 </div>
-                
-              
+                <Contador stock={detalle.stock}/>
                 <div className='buttons-container'>
-                    <button disabled={detalle.stock === 0} className="card-btn" onClick={() => agregarAlCarrito()}> Agregar al carrito </button>
+                    <button disabled={detalle.stock === 0} className="card-btn" onClick={()=> agregarAlCarrito({id: detalle.id, nombre: detalle.nombre, precio: detalle.precio, cantidad:contador})}> Agregar al carrito </button>
                     <Link to="/"><button className="card-btn">Volver al inicio</button></Link>            
                 </div>
                 
