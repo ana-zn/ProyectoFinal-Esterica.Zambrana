@@ -1,1 +1,25 @@
-    
+.form-container h2{
+    font-size: 2rem;
+    text-align: center;
+    font-family: "Poppins", serif;
+    font-weight: 500;
+    margin: 32px;
+    color: #EF6A3F;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    width: 600px; 
+    margin: auto;
+    gap: 8px; 
+}
+input{
+    padding: 10px 16px;
+    border: 1px solid #EF6A3F;
+    border-radius: 32px;
+}
+
+input::placeholder{
+    color: #EF6A3F;
+    font-size: 1rem;
+}

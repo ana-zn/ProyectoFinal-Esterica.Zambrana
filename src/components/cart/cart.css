@@ -1,1 +1,45 @@
-/* Agregar estilos */
+.cart-container{
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+    margin: auto;
+    gap: 24px;
+}
+.cart-container button{
+    margin-top: 16px;
+}
+.item-container{
+    display: flex;
+    flex-direction: column; 
+}
+.item-container p{
+    font-size: 1rem;
+    color:#EF6A3F ;
+    font-family: "Poppins", serif;
+}
+.total-price{
+    font-size: 1.5rem;
+    color:#EF6A3F ;
+    font-family: "Poppins", serif;
+}
+
+.send-container{
+    display: flex;
+    margin-bottom: 20px;
+    gap: 16px; 
+}
+
+.btn-end{
+    background-color: #EF6A3F ;
+    width: 100%;
+    padding: 8px 32px; 
+    color: #ffff;
+    font-size: 1rem;
+    font-family: "Poppins", serif;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 32px;
+}
+hr{
+    border: 1px solid #EF6A3F;
+}

@@ -9,8 +9,8 @@ function NavBar() {
     const { carrito } = useAppContext(); 
     return(
         <Link to="/Cart">
-            <div>
-                <p onClick={()=> console.log(carrito)}>Icono Carrito ({carrito.length})</p>
+            <div className=''>
+                <p onClick={()=> console.log(carrito)}>({carrito.length})</p>
                 <button className='button-navbar' id='shop-button'><LuShoppingBasket /></button>
             </div>
         </Link>
