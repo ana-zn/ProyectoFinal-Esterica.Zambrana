@@ -1,64 +1,70 @@
-import { useEffect, useState } from 'react';
-import fetchData from '../../fetchData';
-import Item from '../item/Item';
-import Loader from '../Loader/Loader'; 
-import ItemDetail from '../ItemDetail/ItemDetail';
-import './ItemListContainer.css';
-import { useParams } from 'react-router-dom';
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { db } from "../../firebaseconfig";
+import { collection, getDocs, query, where } from "firebase/firestore";
+
+import Item from "../item/Item";
+import Loader from "../Loader/Loader";
+import "./ItemListContainer.css";
 
 function ItemListContainer() {
+  const [misProductos, setMisProductos] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [carrito, setCarrito] = useState([]);
 
-    const [todosLosProductos, setTodosLosProductos] = useState([]);
-    const [misProductos, setMisProductos] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [detalleFiltrado, setDetalleFiltrado] = useState(false);
+  const { categoria } = useParams();
 
-    const [carrito, setCarrito] = useState([]);
+  const agregarAlCarrito = (producto) => {
+    setCarrito([...carrito, producto]);
+  };
 
-    const { categoria } = useParams(); 
+  useEffect(() => {
+    setLoading(true);
+    const obtenerProductos = async () => {
+      try {
+        const refCollection = collection(db, "products");
 
-    const agregarAlCarrito = (producto) =>{
-      setCarrito([...carrito, producto]); 
-    }
+        // Si hay categoría, filtramos
+        const consulta = categoria
+          ? query(refCollection, where("categoria", "==", categoria))
+          : refCollection;
 
-    useEffect(() => {
-        if(todosLosProductos.length === 0){
-          fetchData().then(response => {
-            setTodosLosProductos(response); 
-            if (categoria) {
-              const productosFiltrados = response.filter(el => el.categoria === categoria); 
-              setMisProductos(productosFiltrados); 
-              setLoading(false);
-            } else {
-              setMisProductos(response)
-              setLoading(false)
-            }            
-          })
-          .catch(err => console.error(err));
-        } else {
-          if (categoria) {
-              const productosFiltrados = todosLosProductos.filter(el => el.categoria === categoria);
-              setMisProductos(productosFiltrados);
-          } else {
-              setMisProductos(todosLosProductos);
-          };
+        const response = await getDocs(consulta);
+
+        const productos = response.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+
+        setMisProductos(productos);
+      } catch (error) {
+        console.error("Error al obtener productos:", error);
+      } finally {
+        setLoading(false);
       }
-      
+    };
+
+    obtenerProductos();
   }, [categoria]);
-      
+
   return (
-    <>
-      <section className='ItemListContainer'>
-        {loading ? (
-          <Loader />
-        ) : (
-          misProductos.map((el, index) => (
-            <Item key={index} id={el.id} nombre={el.nombre} precio={el.precio} img={el.img} agregarAlCarrito={agregarAlCarrito} producto={el}/>
-          ))
-        )}
-        <button className='' onClick={() => console.log(carrito)}>Ver Carrito</button>
-      </section>
-    </>
+    <section className="ItemListContainer">
+      {loading ? (
+        <Loader />
+      ) : (
+        misProductos.map((el) => (
+          <Item
+            key={el.id}
+            id={el.id}
+            nombre={el.nombre}
+            precio={el.precio}
+            img={el.img}
+            agregarAlCarrito={agregarAlCarrito}
+            producto={el}
+          />
+        ))
+      )}
+    </section>
   );
 }
 

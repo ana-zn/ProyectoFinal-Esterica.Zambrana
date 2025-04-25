@@ -1,8 +1,8 @@
-import { productos } from "./productos"; // Solo importamos productos
+import { products } from "./products"; // Solo importamos productos
 
 const fetchData = () => new Promise(resolve => { 
   setTimeout(() => {
-    resolve(productos); 
+    resolve(products); 
   },3000); 
 });
 

@@ -15,14 +15,15 @@ function App() {
      <ContextProvider>
         <BrowserRouter>
           <NavBar />
-            <Routes>
-              <Route path='/banner' element={<Banner/>} />
-              <Route path="/productos" element={<ItemListContainer />} />
-              <Route path="/detalle/:id" element={<ItemDetail />} /> 
-              <Route path='/Cart' element={<Cart/>}/>
-              <Route path='/Checkout' element={<Checkout/>} />
-              <Route path="*" element={<p>404 ROUTE NOT FOUND</p>} /> 
-            </Routes>
+          <Routes>
+            <Route path='/banner' element={<Banner />} />
+            <Route path="/products" element={<ItemListContainer />} />
+            <Route path="/products/:categoria" element={<ItemListContainer />} />
+            <Route path="/detalle/:id" element={<ItemDetail />} />
+            <Route path='/Cart' element={<Cart />} />
+            <Route path='/Checkout' element={<Checkout />} />
+            <Route path="*" element={<p>404 ROUTE NOT FOUND</p>} />
+          </Routes>
     
         </BrowserRouter> 
     </ContextProvider>
