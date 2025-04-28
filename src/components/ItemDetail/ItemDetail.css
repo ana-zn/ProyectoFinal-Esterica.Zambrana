@@ -5,6 +5,11 @@
     flex-direction: row; 
     box-sizing: border-box;
     overflow: hidden;
+    gap: 32px;
+}
+.card-detail img{
+   height: 480px;
+   width: 400px;
 }
 .item-detail{
    display: flex;

@@ -49,9 +49,12 @@ function ItemDetail() {
         </div>
         <Contador stock={detalle.stock} />
         <div className='buttons-container'>
-          <button disabled={detalle.stock === 0} className="card-btn"
-            onClick={() => agregarAlCarrito({ id: detalle.id, nombre: detalle.title, precio: detalle.price, cantidad: contador })}>
-            Agregar al carrito
+          <button disabled={detalle.stock === 0} className="card-btn" onClick={() => agregarAlCarrito({ 
+                id: detalle.id, 
+                nombre: detalle.nombre, 
+                precio: detalle.precio, 
+                cantidad: contador 
+              })}> Agregar al carrito
           </button>
           <Link to="/products"><button className="card-btn">Volver a productos</button></Link>
         </div>

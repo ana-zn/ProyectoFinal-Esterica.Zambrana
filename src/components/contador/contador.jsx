@@ -8,7 +8,7 @@ function Contador({stock}) {
     return (
         <div className="contador-container">
             <div className="buttons-container">
-                <button disabled={contador === 1} className="btn-modify" onClick={() => setContador(contador - 1)}>-</button>
+                <button  disabled={contador === 1} className="btn-modify" onClick={() => setContador(contador - 1)}>-</button>
                 <p id="numero">{contador}</p>
                 <button disabled={contador === stock} className="btn-modify" onClick={() => setContador(contador + 1)}>+</button>
             </div>

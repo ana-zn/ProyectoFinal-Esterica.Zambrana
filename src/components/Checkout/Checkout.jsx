@@ -3,7 +3,7 @@ import { useAppContext } from '../../context/context';
 import './Checkout.css';
 import { useNavigate } from 'react-router-dom';
 import { db } from '../../firebaseconfig';
-import { addDoc, collection, updateDoc, doc } from 'firebase/firestore';
+import { addDoc, collection, updateDoc, doc, getDoc } from 'firebase/firestore'; // Importar getDoc
 
 function Checkout() {
     const navigate = useNavigate();
@@ -39,7 +39,20 @@ function Checkout() {
             const productsCollection = collection(db, "products");
             for (const product of order.items) {
                 const refDoc = doc(productsCollection, product.id);
-                await updateDoc(refDoc, { stock: product.stock - product.cantidad });
+                const productSnap = await getDoc(refDoc);
+
+                if (productSnap.exists()) {
+                    const actualStock = productSnap.data().stock;
+
+                    if (actualStock >= product.cantidad) { // Verificar si hay suficiente stock
+                        await updateDoc(refDoc, { stock: actualStock - product.cantidad });
+                    } else {
+                        console.error(`No hay suficiente stock para el producto ${product.id}`);
+                        // Puedes agregar un manejo de error aquí, como mostrar un mensaje al usuario
+                    }
+                } else {
+                    console.error(`El producto ${product.id} no existe en la base de datos`);
+                }
             }
 
             setOrderId(res.id);
@@ -64,7 +77,7 @@ function Checkout() {
                     <input type="text" placeholder='Nombre' name="nombre" value={formData.nombre} onChange={modificarInput} />
                     <input type="text" placeholder='Correo' name="correo" value={formData.correo} onChange={modificarInput} />
                     <input type="text" placeholder='Teléfono' name="telefono" value={formData.telefono} onChange={modificarInput} />
-                    <input className= "btn-end" type="submit" value="Enviar" />
+                    <input className="btn-end" type="submit" value="Enviar" />
                 </form>
             )}
         </div>

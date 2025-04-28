@@ -35,7 +35,7 @@ Item.propTypes = {
     nombre: PropTypes.string,
     precio: PropTypes.number,
     img: PropTypes.string,
-    usarFiltro: PropTypes.func.isRequired
 };
+
 
 export default Item;

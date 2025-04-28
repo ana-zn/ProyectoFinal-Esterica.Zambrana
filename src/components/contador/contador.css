@@ -1,0 +1,23 @@
+.buttons-container{
+    display: flex;
+    align-items: center;
+}
+.btn-modify{
+    font-size: 1rem;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border: 2px solid #EF6A3F;
+    border-radius: 100px;
+    background-color: transparent;
+    color: #EF6A3F;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+  
+.btn-modify:hover {
+    background-color: #EF6A3F;
+    color: #ffff; 
+  }
